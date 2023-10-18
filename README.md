@@ -3,7 +3,16 @@
 - 🌱 I’m currently learning ...
 - 💞️ I’m looking to collaborate on ...
 - 📫 How to reach me ...
+const {TestServer} = require('@pptr/testserver');
 
+(async(() => {
+  const httpServer = await TestServer.create(__dirname, 8000),
+  const httpsServer = await TestServer.createHTTPS(__dirname, 8001)
+  httpServer.setRoute('/hello', (req, res) => {
+    res.end('Hello, world!');
+  });
+  console.log('HTTP and HTTPS servers are running!');
+})();
 <!---
 Tbrandon312/Tbrandon312 is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 You can click the Preview link to take a look at your changes.
